@@ -1,17 +1,17 @@
 import { useState } from "react";
-import Counter from "./components/Counter";
-import Stats from "./components/Stats";
+import Counter from "./Counter";
+import Stats from "../components/Stats";
 
 const initialCounters = [
   {
     id: 1,
-    count: 0
+    count: 0,
   },
   {
     id: 2,
-    count: 0
-  }
-]
+    count: 0,
+  },
+];
 function App() {
   const [counters, setCounters] = useState(initialCounters);
 
@@ -20,8 +20,8 @@ function App() {
       if (counter.id === id) {
         return {
           ...counter,
-          count: counter.count + 1
-        }
+          count: counter.count + 1,
+        };
       }
       return counter;
     });
@@ -33,32 +33,35 @@ function App() {
       if (counter.id === id) {
         return {
           ...counter,
-          count: counter.count - 1
-        }
+          count: counter.count - 1,
+        };
       }
       return counter;
     });
     setCounters(newCounters);
-  }
+  };
 
-  const totalCount = counters.reduce((total, counter) => total + counter.count, 0);
+  const totalCount = counters.reduce(
+    (total, counter) => total + counter.count,
+    0
+  );
   return (
-    <div className="w-screen h-screen p-10 bg-gray-100 text-slate-700">
+    <div className="w-screen p-10">
       <h1 className="max-w-md mx-auto text-center text-2xl font-bold">
-        Simple Counter Application
+        Simple Counter Application without redux
       </h1>
 
-      <div className="max-w-md flex flex-col items-center mx-auto mt-10 space-y-5">
-        {
-          counters.map((counter) => (
-            <Counter
-              key={counter.id}
-              count={counter.count}
-              onIncrement={() => handleIncrement(counter.id)}
-              onDecrement={() => handleDecrement(counter.id)}
-            />
-          ))
-        }
+      <div className=" flex gap-10 justify-center items-center mx-auto mt-10">
+        {counters.map((counter) => (
+          <Counter
+            key={counter.id}
+            count={counter.count}
+            onIncrement={() => handleIncrement(counter.id)}
+            onDecrement={() => handleDecrement(counter.id)}
+          />
+        ))}
+      </div>
+      <div className="flex mt-5 items-center justify-center">
         <Stats totalCount={totalCount}></Stats>
       </div>
     </div>
