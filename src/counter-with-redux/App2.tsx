@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Counter from "../counter-withoud-redux/Counter";
 import Stats from "../components/Stats";
+import Counter2 from "./Counter2";
 
 const initialCounters = [
   {
@@ -53,7 +53,7 @@ function App2() {
 
       <div className=" flex gap-10 justify-center items-center mx-auto mt-10">
         {counters.map((counter) => (
-          <Counter
+          <Counter2
             key={counter.id}
             count={counter.count}
             onIncrement={() => handleIncrement(counter.id)}
