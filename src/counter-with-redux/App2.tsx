@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useSelector } from "react-redux";
 import Stats from "../components/Stats";
 import Counter2 from "./Counter2";
 
@@ -13,7 +13,7 @@ const initialCounters = [
   },
 ];
 function App2() {
-  const [counters, setCounters] = useState(initialCounters);
+  const counters = useSelector((state: any) => state.counters);
 
   const handleIncrement = (id: number) => {
     const newCounters = counters.map((counter) => {
