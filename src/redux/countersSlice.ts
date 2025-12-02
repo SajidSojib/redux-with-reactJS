@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-interface Counter {
+export interface Counter {
   id: number;
   count: number;
 }
